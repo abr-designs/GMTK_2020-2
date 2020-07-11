@@ -10,6 +10,32 @@ public class Draggable : MonoBehaviour
     private bool dragging;
     
     private Transform transform;
+
+    [SerializeField]
+    private List<Sprite> sprites;
+
+    private new Rigidbody2D rigidbody
+    {
+        get
+        {
+            if (_rigidbody)
+                _rigidbody = GetComponent<Rigidbody2D>();
+            return _rigidbody;
+        }
+    }
+    private Rigidbody2D _rigidbody;
+    
+    private TargetJoint2D joint
+    {
+        get
+        {
+            if (_joint)
+                _joint = GetComponent<TargetJoint2D>();
+            return _joint;
+        }
+    }
+    private TargetJoint2D _joint;
+    
     private Collider2D collider;
 
     public new SpriteRenderer renderer
@@ -22,29 +48,53 @@ public class Draggable : MonoBehaviour
             return _renderer;
         }
     }
-    public SpriteRenderer _renderer;
+    private SpriteRenderer _renderer;
     
     // Start is called before the first frame update
     private void Start()
     {
         transform = gameObject.transform;
         collider = GetComponent<Collider2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _joint = GetComponent<TargetJoint2D>();
+        _renderer = GetComponent<SpriteRenderer>();
+
+        _renderer.sprite = sprites[Random.Range(0, sprites.Count)];
+        transform.localScale = Vector3.one * Random.Range(0.4f, 1f); 
+        
+        collider = gameObject.AddComponent<PolygonCollider2D>();
+
+        rigidbody.isKinematic = true;
+        rigidbody.velocity = Vector2.zero;
+        rigidbody.angularVelocity = 0f;
+        
+        joint.anchor = Vector2.zero;
+        joint.target = transform.position;
     }
 
 
     public void OnDragStart(Vector2 clickPosition)
     {
-        anchorOffset = clickPosition - (Vector2)transform.position;
+        anchorOffset = transform.InverseTransformPoint(clickPosition);
+        rigidbody.isKinematic = false;
+
+        joint.anchor = anchorOffset;
     }
 
     public void OnDragUpdate(Vector2 targetPosition)
     {
-        transform.position = targetPosition - anchorOffset;
+        joint.target = targetPosition - anchorOffset;
     }
 
     public void OnDragEnd()
     {
-        anchorOffset = Vector2.zero;
+        rigidbody.isKinematic = true;
+        rigidbody.velocity = Vector2.zero;
+        rigidbody.angularVelocity = 0f;
+        
+        //rigidbody.simulated = false;
+        joint.anchor = anchorOffset = Vector2.zero;
+        
     }
 
 }

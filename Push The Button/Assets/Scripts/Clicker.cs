@@ -9,7 +9,13 @@ public class Clicker : MonoBehaviour
     [SerializeField]
     private Camera camera;
 
-    private Vector2 screenPoint;
+    private Vector2 grabPoint;
+
+    [SerializeField]
+    private Grabbers _grabbers;
+
+    [SerializeField]
+    private LayerMask LayerMask;
     
     // Start is called before the first frame update
     void Start()
@@ -20,7 +26,8 @@ public class Clicker : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        screenPoint = camera.ScreenToWorldPoint(Input.mousePosition);
+        grabPoint = _grabbers.Position;
+        //screenPoint = camera.ScreenToWorldPoint(Input.mousePosition);
         
         DraggableSolver();
 
@@ -31,11 +38,14 @@ public class Clicker : MonoBehaviour
 
     private void ClickParser()
     {
-        var hit = Physics2D.Raycast(screenPoint, Vector2.zero);
+        var ray = new Ray((Vector3)grabPoint - Vector3.forward * 10f, Vector3.forward);
+        var hit = Physics2D.GetRayIntersection(ray, 15f, LayerMask.value);
 
         if (hit.collider == null)
             return;
 
+        Debug.Log($"Hit: {hit.collider.gameObject.name}", hit.collider);
+        
         switch (hit.collider.gameObject.tag)
         {
             //--------------------------------------------------------------------------------------------------------//
@@ -65,7 +75,7 @@ public class Clicker : MonoBehaviour
     {
         if (currentlyDragging == null) return;
         
-        currentlyDragging.OnDragUpdate(screenPoint);
+        currentlyDragging.OnDragUpdate(grabPoint);
 
         if (!Input.GetKeyUp(KeyCode.Mouse0)) 
             return;

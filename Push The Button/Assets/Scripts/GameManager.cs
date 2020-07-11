@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] 
+    private Grabbers _grabbers;
+    
     [SerializeField]
     private List<PButton> buttons;
     [SerializeField]
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
         
         SetupButtons();
         SetupGarbage();
+        
+        _grabbers.SetupArms(Values.age, Values.color);
     }
 
     //================================================================================================================//
@@ -98,10 +101,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Button Pressed");
         
-        for (int i = activeGarbage.Count - 1; i >= 0; i--)
+        for (var i = activeGarbage.Count - 1; i >= 0; i--)
         {
             Destroy(activeGarbage[i].gameObject);
         }
+        
+        activeGarbage.Clear();
     }
     
     //================================================================================================================//
