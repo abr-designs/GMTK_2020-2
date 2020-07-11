@@ -17,12 +17,6 @@ public class Clicker : MonoBehaviour
     [SerializeField]
     private LayerMask LayerMask;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     private void Update()
     {
@@ -44,8 +38,6 @@ public class Clicker : MonoBehaviour
         if (hit.collider == null)
             return;
 
-        Debug.Log($"Hit: {hit.collider.gameObject.name}", hit.collider);
-        
         switch (hit.collider.gameObject.tag)
         {
             //--------------------------------------------------------------------------------------------------------//

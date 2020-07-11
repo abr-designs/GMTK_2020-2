@@ -28,12 +28,6 @@ public class Grabbers : MonoBehaviour
     [SerializeField]
     private List<Arm> arms;
 
-    [SerializeField]
-    private Color testColor;
-
-    [SerializeField, Range(1,100)]
-    private int testAge;
-
     public Vector2 Position => transform.position;
 
     [SerializeField]
@@ -59,6 +53,9 @@ public class Grabbers : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main;
+        
+        if(Values.age == 0)
+            SetupArms(25, Color.magenta);
     }
 
     // Update is called once per frame

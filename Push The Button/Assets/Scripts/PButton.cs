@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 public class PButton : MonoBehaviour
@@ -10,21 +9,27 @@ public class PButton : MonoBehaviour
     [SerializeField]
     private ButtonSprites ButtonSprites;
 
-    private new SpriteRenderer renderer;
+    private new SpriteRenderer renderer
+    {
+        get
+        {
+            if (_renderer == null)
+                _renderer = GetComponent<SpriteRenderer>();
+
+            return _renderer;
+        }
+    }
+    private SpriteRenderer _renderer;
 
     private Color inactiveColor;
     private Color activeColor;
     
-    // Start is called before the first frame update
-    private void Start()
-    {
-        renderer = GetComponent<SpriteRenderer>();
-    }
-
+    //================================================================================================================//
+    
     public void SetActive(bool state, Color color, Action Callback)
     {
         Color.RGBToHSV(color, out var h, out _, out _);
-        inactiveColor = Color.HSVToRGB(h, 0.8f, 0.7f);
+        inactiveColor = Color.HSVToRGB(h, 0.65f, 0.5f);
         activeColor = Color.HSVToRGB(h, 0.8f, 1f);
 
 
@@ -32,27 +37,26 @@ public class PButton : MonoBehaviour
         active = state;
         pressedCallback = Callback;
     }
+    
+    //================================================================================================================//
 
     public void Pressed()
     {
-        if (!active)
-            return;
-
         renderer.sprite = ButtonSprites.DownSprite;
         
-        pressedCallback?.Invoke();
-
-        StartCoroutine(DelayCoroutine(0.3f, () =>
+        if (!active)
         {
-            renderer.sprite = ButtonSprites.DownSprite;
-        }));
+            LevelManager.PredicateCall(() => Input.GetKeyUp(KeyCode.Mouse0), () =>
+            {
+                renderer.sprite = ButtonSprites.UpSprite;
+            });
+            return;
+        }
+
+        renderer.color = inactiveColor;
+
+        pressedCallback?.Invoke();
     }
 
-    private IEnumerator DelayCoroutine(float time, Action callback)
-    {
-        yield return new WaitForSeconds(time);
-        
-        callback?.Invoke();
-    }
-
+    //================================================================================================================//
 }
