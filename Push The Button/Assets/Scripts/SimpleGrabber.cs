@@ -46,4 +46,9 @@ public class SimpleGrabber : MonoBehaviour
     {
         _arm.SetColor(color);
     }
+
+    public void SetGrabbersLocked(bool locked)
+    {
+        
+    }
 }

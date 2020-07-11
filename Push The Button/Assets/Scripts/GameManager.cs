@@ -55,8 +55,11 @@ public class GameManager : MonoBehaviour
     {
         this.seed = seed;
     }
-    
-    
+
+    public void ResetGrabbers()
+    {
+        _grabbers.transform.position = Vector3.up * -3.48f;
+    }
 
 
     

@@ -5,8 +5,6 @@ public class Level : MonoBehaviour
 {
 
     [SerializeField]
-    public string levelName;
-    [SerializeField]
     public List<PButton> _buttons;
     [SerializeField]
     public int GarbageCount;
@@ -16,10 +14,11 @@ public class Level : MonoBehaviour
     [SerializeField]
     public float time;
 
-    public float startTimeMin;
-    public float startTimeMax;
+    public string instruction;
+    //public float startTimeMin;
+    //public float startTimeMax;
 
-    public bool countingDown;
+    //public bool countingDown;
 
     [SerializeField]
     public int seed;

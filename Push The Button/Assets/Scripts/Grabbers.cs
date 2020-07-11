@@ -33,6 +33,8 @@ public class Grabbers : MonoBehaviour
     [SerializeField]
     private AnimationCurve sizeCurve = new AnimationCurve();
 
+    public bool locked;
+
 
     private new Transform transform
     {
@@ -61,6 +63,9 @@ public class Grabbers : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (locked)
+            return;
+        
         screenPoint = _camera.ScreenToWorldPoint(Input.mousePosition);
 
         MoveTowardsTarget();

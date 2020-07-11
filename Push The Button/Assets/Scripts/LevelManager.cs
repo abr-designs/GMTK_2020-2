@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,12 +19,19 @@ public class LevelManager : MonoBehaviour
     private GameObject garbagePrefab;
 
     //private Level currentLevel => levels[levelIndex] is null;
+
+    private float timeLeft;
     
     private List<Draggable> activeGarbage;
 
     private static LevelManager _instance;
 
     private new Transform transform;
+
+    [SerializeField] 
+    private TextMeshPro timeText;
+    [SerializeField] 
+    private TextMeshPro instructionText;
 
     //================================================================================================================//
     
@@ -40,14 +48,37 @@ public class LevelManager : MonoBehaviour
         {
             level.gameObject.SetActive(false);
         }
+        
+        waiting = true;
 
         StartLevel();
+    }
+
+    private void LateUpdate()
+    {
+        if (waiting)
+            return;
+
+        UpdateTimeText();
+
+        if (timeLeft < 0f)
+            LostLevel();
+    }
+
+    //================================================================================================================//
+    
+    private void UpdateTimeText()
+    {
+        timeText.text = $"{timeLeft:#.00}s";
+        timeLeft -= Time.deltaTime;
     }
     
     //================================================================================================================//
 
     private void StartLevel()
     {
+        _gameManager.ResetGrabbers();
+        
         var level = levels[levelIndex];
         level.gameObject.SetActive(true);
         
@@ -55,7 +86,14 @@ public class LevelManager : MonoBehaviour
         SetupButtons(level._buttons);
         SetupGarbage(level.GarbageCount, level.garbageArea);
 
-        waiting = false;
+        instructionText.text = level.instruction;
+        timeLeft = level.time;
+        UpdateTimeText();
+        
+        DelayedCall(1f, () =>
+        {
+            waiting = false;
+        });
     }
 
     private void LoadNextLevel()
@@ -70,7 +108,7 @@ public class LevelManager : MonoBehaviour
             return;
         }
         
-        Debug.Log($"Loading level {levels[levelIndex].levelName}");
+        Debug.Log($"Loading level {levels[levelIndex].gameObject.name}");
 
 
         
@@ -82,6 +120,11 @@ public class LevelManager : MonoBehaviour
         CleanupGarbage();
         
         StartLevel();
+    }
+
+    private void LostLevel()
+    {
+        waiting = true;
     }
     
     //================================================================================================================//

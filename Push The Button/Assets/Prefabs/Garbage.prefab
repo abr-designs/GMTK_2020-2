@@ -80,6 +80,15 @@ MonoBehaviour:
   - {fileID: -1297129861320933873, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
   - {fileID: -9154596528059548655, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
   - {fileID: 8800704785599724557, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: -7299956920821106373, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: 7222924666377679764, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: 674344491250379767, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: 6760902979540218405, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: 8689634497850438892, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: 99059243507516102, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: -1310774164585270125, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: 1981984726503205469, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
+  - {fileID: -4038218128987204846, guid: 4a27b2cffa491364d9db90282dce679f, type: 3}
 --- !u!212 &619012931519645507
 SpriteRenderer:
   m_ObjectHideFlags: 0
