@@ -25,14 +25,19 @@ public class PButton : MonoBehaviour
     private Color activeColor;
     
     //================================================================================================================//
-    
-    public void SetActive(bool state, Color color, Action Callback)
+
+    public void SetColor(Color color)
     {
         Color.RGBToHSV(color, out var h, out _, out _);
         inactiveColor = Color.HSVToRGB(h, 0.65f, 0.5f);
         activeColor = Color.HSVToRGB(h, 0.8f, 1f);
 
 
+        renderer.color = inactiveColor;
+    }
+    
+    public void SetActive(bool state, Action Callback)
+    {
         renderer.color = state ? activeColor : inactiveColor;
         active = state;
         pressedCallback = Callback;

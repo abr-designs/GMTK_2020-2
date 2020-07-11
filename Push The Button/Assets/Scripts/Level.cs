@@ -15,10 +15,8 @@ public class Level : MonoBehaviour
     public float time;
 
     public string instruction;
-    //public float startTimeMin;
-    //public float startTimeMax;
-
-    //public bool countingDown;
+    public float startTimeMin;
+    public float startTimeMax;
 
     [SerializeField]
     public int seed;

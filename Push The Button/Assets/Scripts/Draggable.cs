@@ -8,6 +8,11 @@ public class Draggable : MonoBehaviour
     private Vector2 anchorOffset;
 
     private bool dragging;
+
+    [SerializeField]
+    private float minScale = 0.75f;
+    [SerializeField]
+    private float maxScale = 1.5f;
     
     private Transform transform;
 
@@ -60,7 +65,8 @@ public class Draggable : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
 
         _renderer.sprite = sprites[Random.Range(0, sprites.Count)];
-        transform.localScale = Vector3.one * Random.Range(0.4f, 1f); 
+        _renderer.flipX = Random.value >= 0.5f;
+        transform.localScale = Vector3.one * Random.Range(minScale, maxScale); 
         
         collider = gameObject.AddComponent<PolygonCollider2D>();
 

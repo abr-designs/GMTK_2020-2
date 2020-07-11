@@ -177,6 +177,8 @@ MonoBehaviour:
     height: 0
   time: 30
   instruction: Stay on your Toes
+  startTimeMin: 1
+  startTimeMax: 3
   seed: 1234567890
 --- !u!1 &29491000
 GameObject:
@@ -396,15 +398,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttons:
   - {fileID: 1379833643}
-  GarbageCount: 25
+  GarbageCount: 30
   garbageArea:
     serializedVersion: 2
-    x: -3.26
+    x: -5.29
     y: -0.4
-    width: 6.82
-    height: 3.92
+    width: 10.68
+    height: 4.22
   time: 60
   instruction: You slob
+  startTimeMin: 1
+  startTimeMax: 3
   seed: 1234567890
 --- !u!1 &182113675
 GameObject:
@@ -462,6 +466,8 @@ MonoBehaviour:
     height: 3
   time: 60
   instruction: Move that trash
+  startTimeMin: 1
+  startTimeMax: 3
   seed: 1234567890
 --- !u!1 &241147536
 GameObject:
@@ -1045,6 +1051,8 @@ MonoBehaviour:
     height: 0
   time: 30
   instruction: Push It again
+  startTimeMin: 1
+  startTimeMax: 3
   seed: 1234567890
 --- !u!1001 &670718654
 PrefabInstance:
@@ -1437,6 +1445,8 @@ MonoBehaviour:
     height: 0
   time: 30
   instruction: Push the Button
+  startTimeMin: 1
+  startTimeMax: 3
   seed: 1234567890
 --- !u!1 &1124996535
 GameObject:
@@ -1838,6 +1848,8 @@ MonoBehaviour:
     height: 0
   time: 30
   instruction: Oh god too mAny!
+  startTimeMin: 1
+  startTimeMax: 3
   seed: 1234567890
 --- !u!1 &1433269489
 GameObject:
@@ -2007,9 +2019,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 709762287
+  m_SortingLayer: 1
+  m_SortingOrder: 1000
 --- !u!222 &1433269492
 CanvasRenderer:
   m_ObjectHideFlags: 2
@@ -2293,7 +2305,7 @@ MonoBehaviour:
   - {fileID: 1405275783}
   - {fileID: 182113677}
   - {fileID: 98604606}
-  levelIndex: 0
+  levelIndex: 5
   garbagePrefab: {fileID: 619012931519645506, guid: bb89698ae3713104e8769442fa4dbf02,
     type: 3}
   timeText: {fileID: 1433269490}

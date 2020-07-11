@@ -77,7 +77,7 @@ public class LevelManager : MonoBehaviour
 
     private void StartLevel()
     {
-        _gameManager.ResetGrabbers();
+        timeText.gameObject.SetActive(false);
         
         var level = levels[levelIndex];
         level.gameObject.SetActive(true);
@@ -89,10 +89,14 @@ public class LevelManager : MonoBehaviour
         instructionText.text = level.instruction;
         timeLeft = level.time;
         UpdateTimeText();
+
+        var waitTime = Random.Range(level.startTimeMin, level.startTimeMax);
         
-        DelayedCall(1f, () =>
+        DelayedCall(waitTime, () =>
         {
             waiting = false;
+            timeText.gameObject.SetActive(true);
+            EnableButton(level._buttons);
         });
     }
 
@@ -140,6 +144,7 @@ public class LevelManager : MonoBehaviour
             temp.renderer.sortingOrder = i + 1;
             temp.transform.position = new Vector3(locX, locY, -i * 0.01f);
             temp.transform.rotation = Quaternion.Euler(0f, 0, Random.Range(0f,359f));
+            temp.transform.SetParent(_gameManager.transform, true);
             
             activeGarbage.Add(temp);
         }
@@ -157,23 +162,30 @@ public class LevelManager : MonoBehaviour
     
     private void SetupButtons(List<PButton> buttons)
     {
+        for (var i = 0; i < buttons.Count; i++)
+        {
+            var color = Color.HSVToRGB(Random.value, 1f, 1f);
+            
+            buttons[i].SetColor(color);
+        }
+    }
+
+    private void EnableButton(List<PButton> buttons)
+    {
         var selectedIndex = Random.Range(0, buttons.Count);
 
         for (var i = 0; i < buttons.Count; i++)
         {
             var active = i == selectedIndex;
-            var color = Color.HSVToRGB(Random.value, 1f, 1f);
             
             if(active)
                 buttons[i].SetActive(true, 
-                    color, 
                     OnButtonPressed);
             else
             {
-                buttons[i].SetActive(false, color, null);
+                buttons[i].SetActive(false, null);
             }
         }
-
     }
     
     //================================================================================================================//
