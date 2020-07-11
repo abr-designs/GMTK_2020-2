@@ -17,7 +17,7 @@ public class SimpleGrabber : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        _arm.SetColor(Color.HSVToRGB(Random.Range(0f,1f), 0.5f, 1f));
+        //_arm.SetColor(Color.HSVToRGB(Random.Range(0f,1f), 0.5f, 1f));
         
         Transform = gameObject.transform as RectTransform;
     }
@@ -40,5 +40,10 @@ public class SimpleGrabber : MonoBehaviour
         //var centreX = Transform.anchoredPosition.x * _canvas.scaleFactor;
         //var centreY = Transform.anchoredPosition.y * _canvas.scaleFactor;
         Transform.anchoredPosition = Input.mousePosition;// - new Vector2(Screen.width / 2f, Screen.height/2f);
+    }
+
+    public void SetColor(Color color)
+    {
+        _arm.SetColor(color);
     }
 }

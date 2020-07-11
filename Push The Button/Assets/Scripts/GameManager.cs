@@ -7,21 +7,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] 
     private Grabbers _grabbers;
     
-    [SerializeField]
-    private List<PButton> buttons;
+    //[SerializeField]
+    //private List<PButton> buttons;
     [SerializeField]
     private GameObject garbagePrefab;
-    [SerializeField]
-    private int garbageCount;
-    [SerializeField]
-    private Rect garbageArea;
+    //[SerializeField]
+    //private int garbageCount;
+    //[SerializeField]
+    //private Rect garbageArea;
 
     [SerializeField]
     private List<Draggable> activeGarbage;
 
-    [SerializeField]
-    private bool useRandomSeed;
-    [SerializeField]
+    //[SerializeField]
+    //private bool useRandomSeed;
+    //[SerializeField]
     private int seed;
 
     //================================================================================================================//
@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
     }
 
     //================================================================================================================//
+
+    public void SetSeed(int seed)
+    {
+        this.seed = seed;
+    }
     
     private void SetupButtons()
     {
@@ -111,24 +116,6 @@ public class GameManager : MonoBehaviour
     
     //================================================================================================================//
     
-    #if UNITY_EDITOR
 
-    private void OnDrawGizmos()
-    {
-        var TL = new Vector2(garbageArea.xMin, garbageArea.yMax);
-        var TR = new Vector2(garbageArea.xMax, garbageArea.yMax);
-        var BR = new Vector2(garbageArea.xMax, garbageArea.yMin);
-        var BL = new Vector2(garbageArea.xMin, garbageArea.yMin);
-        
-        Gizmos.color = Color.yellow;
-        
-        Gizmos.DrawLine(TL,TR);
-        Gizmos.DrawLine(TR,BR);
-        Gizmos.DrawLine(BR,BL);
-        Gizmos.DrawLine(BL,TL);
-    }
-
-
-#endif
 
 }

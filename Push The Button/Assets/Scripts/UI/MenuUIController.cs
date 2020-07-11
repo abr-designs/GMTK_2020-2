@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,8 +15,6 @@ public class MenuUIController : MonoBehaviour
     private SliderText valueSlider;
 
     [SerializeField]
-    private Color color;
-    [SerializeField]
     private Image colorImage;
 
     [SerializeField]
@@ -29,6 +25,9 @@ public class MenuUIController : MonoBehaviour
 
     [SerializeField]
     private Button readyButton;
+
+    [SerializeField]
+    private SimpleGrabber _simpleGrabber;
     
     // Start is called before the first frame update
     private void Start()
@@ -73,9 +72,13 @@ public class MenuUIController : MonoBehaviour
 
     private void UpdateColor()
     {
-        colorImage.color = Color.HSVToRGB(
+        var color = Color.HSVToRGB(
             hueSlider.Slider.value,
             saturationSlider.Slider.value,
             valueSlider.Slider.value);
+        
+        colorImage.color = color;
+
+        _simpleGrabber.SetColor(color);
     }
 }
