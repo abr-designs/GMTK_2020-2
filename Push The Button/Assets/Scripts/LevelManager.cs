@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
@@ -229,23 +230,17 @@ public class LevelManager : MonoBehaviour
             {
                 _gameUiController.ShowRetireWindow(Random.Range(1,100), () =>
                 {
-                    #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
-#else
-                    Application.Quit();
-#endif
+                    SceneManager.LoadScene(0);
                 });
             });
-            
             return;
         }
-        else
+        
+
+        DelayedCall(1f, () =>
         {
-            DelayedCall(1f, () =>
-            {
-                _gameUiController.ShowSummaryWindow("Controller", LoadNextLevel);
-            });
-        }
+            _gameUiController.ShowSummaryWindow("Controller", LoadNextLevel);
+        });
     }
     
     //================================================================================================================//

@@ -3584,6 +3584,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8749959240722210876, guid: ca2efdf2ddc00b644a398c1a98af9056,
+        type: 3}
+      propertyPath: m_RefResolutionX
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749959240722210876, guid: ca2efdf2ddc00b644a398c1a98af9056,
+        type: 3}
+      propertyPath: m_RefResolutionY
+      value: 720
+      objectReference: {fileID: 0}
     - target: {fileID: 8749959240722210877, guid: ca2efdf2ddc00b644a398c1a98af9056,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3644,7 +3654,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8749959240722211010, guid: ca2efdf2ddc00b644a398c1a98af9056,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749959240722211010, guid: ca2efdf2ddc00b644a398c1a98af9056,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749959240722211010, guid: ca2efdf2ddc00b644a398c1a98af9056,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749959240722211010, guid: ca2efdf2ddc00b644a398c1a98af9056,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749959240722211010, guid: ca2efdf2ddc00b644a398c1a98af9056,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8749959240722210876, guid: ca2efdf2ddc00b644a398c1a98af9056, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ca2efdf2ddc00b644a398c1a98af9056, type: 3}
 --- !u!1 &1818755887
 GameObject:
@@ -4602,7 +4638,7 @@ MonoBehaviour:
     ClosedHand: {fileID: 4491460966578874377, guid: 207fc2422895b6443ad85ca131b82084,
       type: 3}
   mousePos: {x: 0, y: 0}
-  _canvas: {fileID: 0}
+  _canvas: {fileID: 1818755890}
 --- !u!1 &2041869438
 GameObject:
   m_ObjectHideFlags: 0

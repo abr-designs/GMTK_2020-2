@@ -26,6 +26,14 @@ public class GameUIController : MonoBehaviour
     [SerializeField]
     private Button retireButton;
     
+    [SerializeField, Header("Retire Window"), Space(10f)]
+    private GameObject failedWindow;
+
+    [SerializeField]
+    private TMP_Text failedText;
+    [SerializeField]
+    private Button failedButton;
+    
     //================================================================================================================//
     
     // Start is called before the first frame update
@@ -71,12 +79,24 @@ public class GameUIController : MonoBehaviour
         });
     }
     
+    //================================================================================================================//
+
+    public void ShowFailedWindow(Action ButtonCallback)
+    {
+        failedWindow.SetActive(true);
+        var text = string.Empty;
+        
+        //if(age < )
+
+    }
     
     //================================================================================================================//
+
 
     
     public void HideWindows()
     {
+        failedWindow.SetActive(false);
         summaryWindow.SetActive(false);
         retireWindow.SetActive(false);
     }

@@ -35,6 +35,8 @@ public class Grabbers : MonoBehaviour
 
     public bool locked;
 
+    [SerializeField, Range(1,100)]
+    private int testLevel;
 
     private new Transform transform
     {
@@ -57,7 +59,7 @@ public class Grabbers : MonoBehaviour
         _camera = Camera.main;
         
         if(Values.age == 0)
-            SetupArms(25, Color.magenta);
+            SetupArms(testLevel, Color.magenta);
     }
 
     // Update is called once per frame

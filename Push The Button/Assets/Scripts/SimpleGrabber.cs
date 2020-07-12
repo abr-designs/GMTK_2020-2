@@ -11,15 +11,20 @@ public class SimpleGrabber : MonoBehaviour
     public Vector2 mousePos;
 
     private float maxReach;
+    
+    [SerializeField]
+    private Canvas _canvas;
 
     private RectTransform Transform;
+    private RectTransform canvasTransform;
+    private Camera camera;
     
     // Start is called before the first frame update
     private void Start()
     {
-        //_arm.SetColor(Color.HSVToRGB(Random.Range(0f,1f), 0.5f, 1f));
-        
         Transform = gameObject.transform as RectTransform;
+        canvasTransform = _canvas.transform as RectTransform;
+        camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -33,22 +38,16 @@ public class SimpleGrabber : MonoBehaviour
         Position();
     }
 
-    [SerializeField]
-    private Canvas _canvas;
+
     private void Position()
     {
-        //var centreX = Transform.anchoredPosition.x * _canvas.scaleFactor;
-        //var centreY = Transform.anchoredPosition.y * _canvas.scaleFactor;
-        Transform.anchoredPosition = Input.mousePosition;// - new Vector2(Screen.width / 2f, Screen.height/2f);
+        mousePos = camera.ScreenToViewportPoint(Input.mousePosition);
+        
+        Transform.anchoredPosition = mousePos * canvasTransform.sizeDelta;// - new Vector2(Screen.width / 2f, Screen.height/2f);
     }
 
     public void SetColor(Color color)
     {
         _arm.SetColor(color);
-    }
-
-    public void SetGrabbersLocked(bool locked)
-    {
-        
     }
 }
