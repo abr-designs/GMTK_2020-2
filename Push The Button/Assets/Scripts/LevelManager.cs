@@ -102,13 +102,25 @@ public class LevelManager : MonoBehaviour
         
 
         var waitTime = Random.Range(level.startTimeMin, level.startTimeMax);
-        
-        DelayedCall(waitTime, () =>
+
+        if (level.autoWin)
         {
-            waiting = false;
-            timeText.gameObject.SetActive(true);
-            EnableButton(level._buttons);
-        });
+            DelayedCall(waitTime, () =>
+            {
+                waiting = false;
+                OnButtonPressed();
+            });
+        }
+        else
+        {
+            DelayedCall(waitTime, () =>
+            {
+                waiting = false;
+                timeText.gameObject.SetActive(true);
+                EnableButton(level._buttons);
+            });
+        }
+        
     }
 
     private void LoadNextLevel()
@@ -140,6 +152,8 @@ public class LevelManager : MonoBehaviour
     private void LostLevel()
     {
         waiting = true;
+        
+        _gameUiController.ShowFailedWindow(RestartLevel);
     }
     
     //================================================================================================================//
@@ -241,7 +255,7 @@ public class LevelManager : MonoBehaviour
 
         DelayedCall(1f, () =>
         {
-            _gameUiController.ShowSummaryWindow("Controller", LoadNextLevel);
+            _gameUiController.ShowSummaryWindow(levels[levelIndex + 1].jobTitle,levels[levelIndex].victoryText, LoadNextLevel);
         });
     }
     
@@ -273,4 +287,17 @@ public class LevelManager : MonoBehaviour
     }
     
     //================================================================================================================//
+    
+    #if UNITY_EDITOR
+    private void OnValidate()
+    {
+        levels = GetComponentsInChildren<Level>(true);
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].gameObject.name = $"Level {i}";
+        }
+    }
+
+#endif
+    
 }

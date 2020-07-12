@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameUIController : MonoBehaviour
 {
@@ -26,29 +26,33 @@ public class GameUIController : MonoBehaviour
     [SerializeField]
     private Button retireButton;
     
-    [SerializeField, Header("Retire Window"), Space(10f)]
+    [SerializeField, Header("Failed Window"), Space(10f)]
     private GameObject failedWindow;
 
     [SerializeField]
     private TMP_Text failedText;
     [SerializeField]
     private Button failedButton;
-    
+    [SerializeField]
+    private Button quitButton;
     //================================================================================================================//
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        quitButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene(0);
+        });
     }
 
     //================================================================================================================//
 
-    public void ShowSummaryWindow(string title, Action ButtonCallback)
+    public void ShowSummaryWindow(string title,string victoryText, Action ButtonCallback)
     {
         summaryWindow.SetActive(true);
         
-        var text = $"You're doing great work {Values.name} time for your next promotion to: {title}!";
+        var text = $"{victoryText} {Values.name}\nTime for your promotion to: {title}!";
 
         summaryText.text = text;
         
@@ -83,11 +87,53 @@ public class GameUIController : MonoBehaviour
 
     public void ShowFailedWindow(Action ButtonCallback)
     {
-        failedWindow.SetActive(true);
-        var text = string.Empty;
+        var age = Values.age;
+        var name = Values.name;
         
-        //if(age < )
+        if (age == 0)
+            age = 25;
+        
+        failedWindow.SetActive(true);
+        string[] options;
 
+        if (age < 16)
+        {
+            options = new[]
+            {
+                "Wow they really are hiring younger every year!",
+                "Aren't you a little young to be working here?",
+                $"{name}, you're way too young for this!",
+            };
+        }
+        else if (age > 75)
+        {
+            //text = $"Hey {name}, you're getting pretty old, maybe its time to retire?";
+            options = new[]
+            {
+                "Retirement is starting to look good now!",
+                "Who keeps hiring seniors?",
+                $"Wow {name} this Decade looks great on you",
+            };
+        }
+        else
+        {
+            options = new[]
+            {
+                "What a DISASTER!! What are we going to do?! Just try again?",
+                $"{name} I'm not mad, i'm just Disappointed",
+                $"Wow {name} you were so close!",
+            };
+        }
+
+
+        failedText.text = options[Random.Range(0, options.Length)];
+        
+        failedButton.onClick.RemoveAllListeners();
+        failedButton.onClick.AddListener(() =>
+        {
+            ButtonCallback?.Invoke(); 
+            HideWindows();
+        });
     }
     
     //================================================================================================================//

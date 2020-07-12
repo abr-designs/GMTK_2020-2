@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    [SerializeField]
+    public bool autoWin;
 
+    [SerializeField]
+    public string jobTitle;
+    
     [SerializeField]
     public List<PButton> _buttons;
     [SerializeField]
@@ -21,6 +26,9 @@ public class Level : MonoBehaviour
 
     [Range(1,25)]
     public int Cycles = 1;
+
+    [SerializeField]
+    public string victoryText;
     
     [SerializeField]
     public int seed;
