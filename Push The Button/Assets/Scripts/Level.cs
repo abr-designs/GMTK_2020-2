@@ -19,7 +19,7 @@ public class Level : MonoBehaviour
     public float startTimeMin;
     public float startTimeMax;
 
-    [Range(1,3)]
+    [Range(1,25)]
     public int Cycles = 1;
     
     [SerializeField]

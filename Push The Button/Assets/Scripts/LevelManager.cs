@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class LevelManager : MonoBehaviour
 {
     private GameManager _gameManager;
+    private GameUIController _gameUiController;
     
     [SerializeField]
     private Level[] levels;
@@ -42,7 +43,8 @@ public class LevelManager : MonoBehaviour
         _instance = this;
         
         transform = gameObject.transform;
-        
+
+        _gameUiController = FindObjectOfType<GameUIController>();
         _gameManager = FindObjectOfType<GameManager>();
         activeGarbage = new List<Draggable>();
         
@@ -218,9 +220,32 @@ public class LevelManager : MonoBehaviour
             return;
         }
         
-            
-        DelayedCall(2f, LoadNextLevel);
         waiting = true;
+
+        if (levelIndex + 1 >= levels.Length)
+        {
+            timeText.gameObject.SetActive(false);
+            DelayedCall(1f, () =>
+            {
+                _gameUiController.ShowRetireWindow(Random.Range(1,100), () =>
+                {
+                    #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit();
+#endif
+                });
+            });
+            
+            return;
+        }
+        else
+        {
+            DelayedCall(1f, () =>
+            {
+                _gameUiController.ShowSummaryWindow("Controller", LoadNextLevel);
+            });
+        }
     }
     
     //================================================================================================================//
