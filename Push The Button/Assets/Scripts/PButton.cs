@@ -28,7 +28,15 @@ public class PButton : MonoBehaviour
 
     private Color inactiveColor;
     private Color activeColor;
-    
+
+    private static AudioController _audioController;
+
+    private void Start()
+    {
+        if (!_audioController)
+            _audioController = FindObjectOfType<AudioController>();
+    }
+
     //================================================================================================================//
 
     public void SetColor()
@@ -61,8 +69,11 @@ public class PButton : MonoBehaviour
             SetPressedSprite(false);
         });
         
+        
         if (!active)
             return;
+        
+        _audioController?.PlaySoundEffect(SOUND.BUTTON, 0.5f);
 
         renderer.color = inactiveColor;
 

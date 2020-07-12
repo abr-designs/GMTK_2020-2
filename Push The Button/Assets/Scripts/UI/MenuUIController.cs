@@ -28,15 +28,22 @@ public class MenuUIController : MonoBehaviour
 
     [SerializeField]
     private SimpleGrabber _simpleGrabber;
+
+    [SerializeField]
+    private Toggle audioToggle;
+
+    private AudioController _audioController;
     
     // Start is called before the first frame update
     private void Start()
     {
+        _audioController = FindObjectOfType<AudioController>();
+        
         ageSlider.Init();
         hueSlider.Init();
 
         nameText.text = string.Empty;
-
+        
         hueSlider.Slider.onValueChanged.AddListener((value) =>
         {
             UpdateColor();
@@ -65,8 +72,19 @@ public class MenuUIController : MonoBehaviour
             Values.age = (int)ageSlider.Slider.value;
             Values.color = colorImage.color;
             
+            _audioController?.PlaySoundEffect(SOUND.BUTTON, 0.5f);
+            
             SceneManager.LoadScene(1);
         });
+        
+        audioToggle.onValueChanged.AddListener(value =>
+        {
+            _audioController.SetMasterVolume(!value ? 0f: -80f);
+            _audioController?.PlaySoundEffect(SOUND.BUTTON, 0.5f);
+        });
+        
+        _audioController.SetMusic(MUSIC.MENU);
+        ageSlider.Slider.value = Random.Range(0, 101);
     }
 
 

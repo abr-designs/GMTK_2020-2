@@ -16,8 +16,7 @@ public class GameManager : MonoBehaviour
     //[SerializeField]
     //private Rect garbageArea;
 
-    [SerializeField]
-    
+    private AudioController _audioController;    
 
     //[SerializeField]
     //private bool useRandomSeed;
@@ -30,7 +29,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+        _audioController = FindObjectOfType<AudioController>();
 
        //if (useRandomSeed)
        //{
@@ -43,7 +42,7 @@ public class GameManager : MonoBehaviour
        //    Random.InitState(seed);
        //}
         
-        
+       _audioController.SetMusic(MUSIC.GAME);
         
         
         _grabbers.SetupArms(Values.age, Values.color);

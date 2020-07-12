@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
+[DefaultExecutionOrder(-1000)]
 public class AudioController : MonoBehaviour
 {
     [SerializeField]
@@ -28,19 +29,13 @@ public class AudioController : MonoBehaviour
     //================================================================================================================//
     
     // Start is called before the first frame update
-    private IEnumerator Start()
+    private void Start()
     {
         SetMusic(MUSIC.NONE, 0f);
-        yield return null;
-        SetMusic(MUSIC.DEFAULT);
+        //yield return null;
+        //SetMusic(MUSIC.DEFAULT);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     //================================================================================================================//
 
     public void SetMusic(MUSIC music)
@@ -53,10 +48,13 @@ public class AudioController : MonoBehaviour
         switch (music)
         {
             case MUSIC.NONE:
-                masterMixer.TransitionToSnapshots(_snapshots, new[] {1f, 0f}, time);
+                masterMixer.TransitionToSnapshots(_snapshots, new[] {1f, 0f, 0f}, time);
                 break;
-            case MUSIC.DEFAULT:
-                masterMixer.TransitionToSnapshots(_snapshots, new[] {0f, 1f}, time);
+            case MUSIC.MENU:
+                masterMixer.TransitionToSnapshots(_snapshots, new[] {0f, 1f, 0f}, time);
+                break;
+            case MUSIC.GAME:
+                masterMixer.TransitionToSnapshots(_snapshots, new[] {0f, 0f, 1f}, time);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(music), music, null);
@@ -93,7 +91,6 @@ public class AudioController : MonoBehaviour
 
     private void SetVolume(string parameterName, float volume)
     {
-        volume = Mathf.Clamp01(volume);
         masterMixer.SetFloat(parameterName, Mathf.Log10(volume) * 40);
     }
 
@@ -108,11 +105,13 @@ public struct EffectProfile
 
 public enum SOUND
 {
-    
+    GRAB,
+    BUTTON,
 }
 
 public enum MUSIC
 {
     NONE,
-    DEFAULT
+    MENU,
+    GAME
 }

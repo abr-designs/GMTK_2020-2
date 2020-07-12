@@ -18,6 +18,8 @@ public class SimpleGrabber : MonoBehaviour
     private RectTransform Transform;
     private RectTransform canvasTransform;
     private Camera camera;
+
+    private AudioController _audioController;
     
     // Start is called before the first frame update
     private void Start()
@@ -25,13 +27,18 @@ public class SimpleGrabber : MonoBehaviour
         Transform = gameObject.transform as RectTransform;
         canvasTransform = _canvas.transform as RectTransform;
         camera = Camera.main;
+
+        _audioController = FindObjectOfType<AudioController>();
     }
 
     // Update is called once per frame
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
             _arm.IsHandOpen(false);
+            _audioController?.PlaySoundEffect(SOUND.GRAB);
+        }
         else if(Input.GetKeyUp(KeyCode.Mouse0))
             _arm.IsHandOpen(true);
 

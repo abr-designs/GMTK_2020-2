@@ -50,10 +50,17 @@ MonoBehaviour:
   _snapshots:
   - {fileID: -6603340989836620579, guid: 9f8baa5988214c34dabcd78d776a2313, type: 2}
   - {fileID: 24500006, guid: 9f8baa5988214c34dabcd78d776a2313, type: 2}
+  - {fileID: 5151639993118386828, guid: 9f8baa5988214c34dabcd78d776a2313, type: 2}
   fadeTime: 1.6
   effectsSource: {fileID: 2995601816771061430}
-  effects: []
-  _effectProfiles: []
+  effects:
+  - {fileID: 8300000, guid: 699d5f9c1f8a7a9429efd1796dfdc361, type: 3}
+  - {fileID: 8300000, guid: bbc67ef960e069e4bbc2d08aa422c2e5, type: 3}
+  _effectProfiles:
+  - name: Grab
+    pitchRange: {x: 0.8, y: 1.2}
+  - name: Button
+    pitchRange: {x: 0.5, y: 1.5}
 --- !u!1 &2995601816771061428
 GameObject:
   m_ObjectHideFlags: 0

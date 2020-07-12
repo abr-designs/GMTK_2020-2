@@ -38,6 +38,8 @@ public class Grabbers : MonoBehaviour
     [SerializeField, Range(1,100)]
     private int testLevel;
 
+    private AudioController _audioController;
+
     private new Transform transform
     {
         get
@@ -56,6 +58,7 @@ public class Grabbers : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        _audioController = FindObjectOfType<AudioController>();
         _camera = Camera.main;
         
         if(Values.age == 0)
@@ -121,10 +124,14 @@ public class Grabbers : MonoBehaviour
     private void UpdateHandState()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            _audioController?.PlaySoundEffect(SOUND.GRAB);
             foreach (var arm in arms)
             {
                 arm.IsHandOpen(false);
             }
+            
+        }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
             foreach (var arm in arms)
             {
