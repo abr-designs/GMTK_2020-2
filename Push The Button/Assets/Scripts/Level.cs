@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Level : MonoBehaviour
@@ -18,10 +19,20 @@ public class Level : MonoBehaviour
     public float startTimeMin;
     public float startTimeMax;
 
+    [Range(1,3)]
+    public int Cycles = 1;
+    
     [SerializeField]
     public int seed;
     
 #if UNITY_EDITOR
+
+    [ContextMenu("Get Level Buttons")]
+    private void GetLevelButtons()
+    {
+        _buttons.Clear();
+        _buttons = GetComponentsInChildren<PButton>().ToList();
+    }
 
     private void OnDrawGizmos()
     {

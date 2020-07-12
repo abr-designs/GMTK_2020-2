@@ -46,12 +46,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  buttonColor: {r: 0.7924528, g: 0, b: 0, a: 1}
   ButtonSprites:
     UpSprite: {fileID: 8894201953851282084, guid: c86876b4cbfa37d4ca315c8741bab3d8,
       type: 3}
     DownSprite: {fileID: 3760674464881954987, guid: c86876b4cbfa37d4ca315c8741bab3d8,
       type: 3}
+  colorOptions:
+  - {r: 1, g: 0.2, b: 0.2, a: 1}
+  - {r: 1, g: 0.2783019, b: 0.82735837, a: 1}
+  - {r: 1, g: 0.6850692, b: 0, a: 1}
+  - {r: 0.18396229, g: 1, b: 0.26445135, a: 1}
+  - {r: 0.10849059, g: 0.6961506, b: 1, a: 1}
+  - {r: 0.5821188, g: 0.15566039, b: 1, a: 1}
 --- !u!212 &8512276327796893564
 SpriteRenderer:
   m_ObjectHideFlags: 0

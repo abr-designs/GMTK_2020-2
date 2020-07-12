@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!60 &2713470965923240366
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2584963875703551298}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.97999996, y: 0.74}
+      - {x: -1.1, y: 0.59999996}
+      - {x: -1.1, y: -1.18}
+      - {x: 1.22, y: -1.18}
+      - {x: 1.24, y: -0.76}
+      - {x: 1.24, y: 0.64}
+      - {x: 1.04, y: 0.74}
+--- !u!1001 &6196404204883022397
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893564, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7664807735657788756, guid: c86876b4cbfa37d4ca315c8741bab3d8,
+        type: 3}
+    - target: {fileID: 8512276327796893565, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: ButtonSprites.UpSprite
+      value: 
+      objectReference: {fileID: 7664807735657788756, guid: c86876b4cbfa37d4ca315c8741bab3d8,
+        type: 3}
+    - target: {fileID: 8512276327796893565, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: ButtonSprites.DownSprite
+      value: 
+      objectReference: {fileID: -7811504096720598664, guid: c86876b4cbfa37d4ca315c8741bab3d8,
+        type: 3}
+    - target: {fileID: 8512276327796893567, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_Name
+      value: Square Button
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 176405373027309442, guid: ce7285fad213cc84da985168d09e721f, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: ce7285fad213cc84da985168d09e721f, type: 3}
+--- !u!1 &2584963875703551298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8512276327796893567, guid: ce7285fad213cc84da985168d09e721f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6196404204883022397}
+  m_PrefabAsset: {fileID: 0}

@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!60 &354721575940461260
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289591291880158108}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.17999999, y: 0.28}
+      - {x: -0.28, y: 0.28}
+      - {x: -0.48, y: 0.02}
+      - {x: -0.5, y: -0.44}
+      - {x: -0.5, y: -1.0799999}
+      - {x: -0.26, y: -1.28}
+      - {x: 0.19999999, y: -1.28}
+      - {x: 0.29999998, y: -1.26}
+      - {x: 0.35999998, y: -1.12}
+      - {x: 0.44, y: -0.74}
+      - {x: 0.44, y: 0.14}
+--- !u!1001 &2407371692044506339
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893563, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512276327796893564, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2013261503205373015, guid: c86876b4cbfa37d4ca315c8741bab3d8,
+        type: 3}
+    - target: {fileID: 8512276327796893565, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: ButtonSprites.UpSprite
+      value: 
+      objectReference: {fileID: 2013261503205373015, guid: c86876b4cbfa37d4ca315c8741bab3d8,
+        type: 3}
+    - target: {fileID: 8512276327796893565, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: ButtonSprites.DownSprite
+      value: 
+      objectReference: {fileID: -3243065930256096816, guid: c86876b4cbfa37d4ca315c8741bab3d8,
+        type: 3}
+    - target: {fileID: 8512276327796893567, guid: ce7285fad213cc84da985168d09e721f,
+        type: 3}
+      propertyPath: m_Name
+      value: Small Circle Button
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 176405373027309442, guid: ce7285fad213cc84da985168d09e721f, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: ce7285fad213cc84da985168d09e721f, type: 3}
+--- !u!1 &6289591291880158108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8512276327796893567, guid: ce7285fad213cc84da985168d09e721f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2407371692044506339}
+  m_PrefabAsset: {fileID: 0}

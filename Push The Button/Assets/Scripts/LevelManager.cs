@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
     //private Level currentLevel => levels[levelIndex] is null;
 
     private float timeLeft;
+    private int remainingCycles;
+    private int lastSelectedButton = -1;
     
     private List<Draggable> activeGarbage;
 
@@ -77,6 +79,7 @@ public class LevelManager : MonoBehaviour
 
     private void StartLevel()
     {
+        lastSelectedButton = -1;
         timeText.gameObject.SetActive(false);
         
         var level = levels[levelIndex];
@@ -89,6 +92,9 @@ public class LevelManager : MonoBehaviour
         instructionText.text = level.instruction;
         timeLeft = level.time;
         UpdateTimeText();
+
+        remainingCycles = level.Cycles;
+        
 
         var waitTime = Random.Range(level.startTimeMin, level.startTimeMax);
         
@@ -164,16 +170,22 @@ public class LevelManager : MonoBehaviour
     {
         for (var i = 0; i < buttons.Count; i++)
         {
-            var color = Color.HSVToRGB(Random.value, 1f, 1f);
-            
-            buttons[i].SetColor(color);
+            buttons[i].SetColor();
         }
     }
 
+    
     private void EnableButton(List<PButton> buttons)
     {
         var selectedIndex = Random.Range(0, buttons.Count);
-
+        if (lastSelectedButton >= 0)
+        {
+            while (selectedIndex == lastSelectedButton)
+            {
+                selectedIndex = Random.Range(0, buttons.Count);
+            }
+        }
+        
         for (var i = 0; i < buttons.Count; i++)
         {
             var active = i == selectedIndex;
@@ -186,6 +198,8 @@ public class LevelManager : MonoBehaviour
                 buttons[i].SetActive(false, null);
             }
         }
+
+        lastSelectedButton = selectedIndex;
     }
     
     //================================================================================================================//
@@ -195,6 +209,15 @@ public class LevelManager : MonoBehaviour
     {
         if (waiting)
             return;
+        
+        remainingCycles--;
+
+        if (remainingCycles > 0)
+        {
+            EnableButton(levels[levelIndex]._buttons);
+            return;
+        }
+        
             
         DelayedCall(2f, LoadNextLevel);
         waiting = true;
