@@ -91,7 +91,7 @@ public class AudioController : MonoBehaviour
 
     private void SetVolume(string parameterName, float volume)
     {
-        masterMixer.SetFloat(parameterName, Mathf.Log10(volume) * 40);
+        masterMixer.SetFloat(parameterName, volume);
     }
 
 }

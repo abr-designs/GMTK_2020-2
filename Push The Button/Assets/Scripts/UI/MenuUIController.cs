@@ -80,7 +80,7 @@ public class MenuUIController : MonoBehaviour
         audioToggle.onValueChanged.AddListener(value =>
         {
             _audioController.SetMasterVolume(!value ? 0f: -80f);
-            _audioController?.PlaySoundEffect(SOUND.BUTTON, 0.5f);
+            _audioController?.PlaySoundEffect(SOUND.BUTTON, 0.2f);
         });
         
         _audioController.SetMusic(MUSIC.MENU);
