@@ -43,6 +43,10 @@ public class LevelManager : MonoBehaviour
     {
         levels = GetComponentsInChildren<Level>(true);
         
+        #if !UNITY_EDITOR
+        levelIndex = 0;
+        #endif
+        
         _instance = this;
         
         transform = gameObject.transform;
@@ -231,7 +235,7 @@ public class LevelManager : MonoBehaviour
         
         remainingCycles--;
 
-        if (remainingCycles > 0)
+        if (remainingCycles > 0 && levels[levelIndex]._buttons.Count > 1)
         {
             EnableButton(levels[levelIndex]._buttons);
             return;

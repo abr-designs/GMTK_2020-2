@@ -36,7 +36,7 @@ public class PButton : MonoBehaviour
         var selected = colorOptions[Random.Range(0, colorOptions.Count)];
         
         Color.RGBToHSV(selected, out var h, out _, out _);
-        inactiveColor = Color.HSVToRGB(h, 0.65f, 0.5f);
+        inactiveColor = Color.HSVToRGB(h, 0.65f, 0.35f);
         activeColor = Color.HSVToRGB(h, 0.8f, 1f);
 
 
