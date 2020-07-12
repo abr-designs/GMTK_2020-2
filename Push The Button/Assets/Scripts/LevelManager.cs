@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     private GameManager _gameManager;
     private GameUIController _gameUiController;
     
-    [SerializeField]
+    //[SerializeField]
     private Level[] levels;
 
     [SerializeField]
@@ -41,6 +41,8 @@ public class LevelManager : MonoBehaviour
     
     private void Start()
     {
+        levels = GetComponentsInChildren<Level>(true);
+        
         _instance = this;
         
         transform = gameObject.transform;
@@ -271,15 +273,4 @@ public class LevelManager : MonoBehaviour
     }
     
     //================================================================================================================//
-
-    #if UNITY_EDITOR
-    
-    [ContextMenu("Get Levels")]
-    private void GetLevels()
-    {
-        levels = new Level[0];
-        levels = GetComponentsInChildren<Level>(true);
-    }
-    
-    #endif
 }
